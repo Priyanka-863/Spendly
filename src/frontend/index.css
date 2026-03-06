@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Forest/Emerald inspired palette */
+    --background: 0.97 0.006 150;
+    --foreground: 0.15 0.02 170;
+
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.02 170;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.02 170;
+
+    --primary: 0.42 0.14 160;
+    --primary-foreground: 0.98 0.005 160;
+
+    --secondary: 0.93 0.015 160;
+    --secondary-foreground: 0.25 0.06 160;
+
+    --muted: 0.94 0.01 160;
+    --muted-foreground: 0.48 0.04 160;
+
+    --accent: 0.88 0.03 160;
+    --accent-foreground: 0.25 0.06 160;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.02 160;
+    --input: 0.88 0.02 160;
+    --ring: 0.42 0.14 160;
+
+    --chart-1: 0.58 0.19 142;
+    --chart-2: 0.55 0.18 250;
+    --chart-3: 0.72 0.18 60;
+    --chart-4: 0.62 0.22 25;
+    --chart-5: 0.65 0.2 300;
+
+    --sidebar: 0.15 0.025 165;
+    --sidebar-foreground: 0.92 0.01 160;
+    --sidebar-primary: 0.72 0.16 160;
+    --sidebar-primary-foreground: 0.15 0.025 165;
+    --sidebar-accent: 0.22 0.03 165;
+    --sidebar-accent-foreground: 0.92 0.01 160;
+    --sidebar-border: 0.25 0.04 165;
+    --sidebar-ring: 0.72 0.16 160;
+
+    /* Brand accent: warm gold */
+    --accent-gold: 0.78 0.15 80;
+    --accent-gold-fg: 0.15 0.02 80;
+  }
+
+  .dark {
+    --background: 0.13 0.02 170;
+    --foreground: 0.93 0.008 160;
+
+    --card: 0.18 0.025 165;
+    --card-foreground: 0.93 0.008 160;
+
+    --popover: 0.2 0.03 165;
+    --popover-foreground: 0.93 0.008 160;
+
+    --primary: 0.68 0.18 160;
+    --primary-foreground: 0.12 0.02 165;
+
+    --secondary: 0.24 0.04 165;
+    --secondary-foreground: 0.88 0.01 160;
+
+    --muted: 0.22 0.03 165;
+    --muted-foreground: 0.6 0.05 160;
+
+    --accent: 0.28 0.05 165;
+    --accent-foreground: 0.92 0.008 160;
+
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.25 0.04 165;
+    --input: 0.25 0.04 165;
+    --ring: 0.68 0.18 160;
+
+    --chart-1: 0.72 0.19 142;
+    --chart-2: 0.65 0.18 250;
+    --chart-3: 0.75 0.18 60;
+    --chart-4: 0.68 0.22 25;
+    --chart-5: 0.7 0.2 300;
+
+    --sidebar: 0.1 0.02 165;
+    --sidebar-foreground: 0.92 0.01 160;
+    --sidebar-primary: 0.68 0.18 160;
+    --sidebar-primary-foreground: 0.12 0.02 165;
+    --sidebar-accent: 0.18 0.03 165;
+    --sidebar-accent-foreground: 0.92 0.01 160;
+    --sidebar-border: 0.22 0.04 165;
+    --sidebar-ring: 0.68 0.18 160;
+
+    --accent-gold: 0.78 0.16 80;
+    --accent-gold-fg: 0.12 0.02 80;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Outfit", system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  }
+
+  .dot-grid-bg {
+    background-image: radial-gradient(
+      circle,
+      oklch(0.75 0.02 160 / 0.35) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+  }
+
+  .sidebar-gradient {
+    background: linear-gradient(
+      180deg,
+      oklch(var(--sidebar)) 0%,
+      oklch(0.12 0.03 165) 100%
+    );
+  }
+
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-shine::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      oklch(1 0 0 / 0.04) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+  }
+
+  .stat-card-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--primary) / 0.12) 0%,
+      oklch(var(--primary) / 0.04) 100%
+    );
+  }
+}
